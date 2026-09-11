@@ -18,6 +18,7 @@ class ExampleTest extends TestCase
     {
         $this->get('/health')
             ->assertOk()
-            ->assertJson(['status' => 'ok']);
+            ->assertJsonPath('status', 'ok')
+            ->assertJsonStructure(['status', 'app', 'key_set']);
     }
 }

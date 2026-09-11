@@ -48,7 +48,6 @@ RUN mkdir -p \
     && php artisan package:discover --ansi \
     && php artisan event:cache \
     && php artisan view:cache \
-    && php artisan route:cache \
     && chown -R www-data:www-data /app/storage /app/bootstrap/cache
 
 FROM base AS runtime
@@ -64,8 +63,8 @@ ENV PORT=80 \
     APP_DEBUG=false \
     LOG_CHANNEL=stderr \
     LOG_STACK=single \
-    CACHE_STORE=database \
-    SESSION_DRIVER=database \
+    CACHE_STORE=array \
+    SESSION_DRIVER=cookie \
     QUEUE_CONNECTION=sync
 
 USER www-data
