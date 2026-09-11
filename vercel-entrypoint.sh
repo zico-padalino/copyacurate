@@ -8,16 +8,16 @@ chmod 666 /tmp/database.sqlite
 export DB_DATABASE=/tmp/database.sqlite
 unset DB_HOST DB_PORT DB_USERNAME DB_PASSWORD DB_SOCKET DB_URL DATABASE_URL MYSQL_ATTR_SSL_CA || true
 
-# Always use the baked demo key unless a real base64 key was provided.
-case "${APP_KEY:-}" in
-    base64:*) ;;
-    *) export APP_KEY=base64:jhy2XeXMVioryYjMHhGf8jPtWmiHCrfJG2BzhBet3Rw= ;;
-esac
+# Always use the baked demo key (ignore invalid/empty Vercel overrides).
+export APP_KEY=base64:jhy2XeXMVioryYjMHhGf8jPtWmiHCrfJG2BzhBet3Rw=
 
 export APP_ENV=production
-export APP_DEBUG=false
+# Temporarily true so /login shows the real exception while we stabilize deploy.
+export APP_DEBUG=true
 export CACHE_STORE=array
 export SESSION_DRIVER=cookie
+export SESSION_ENCRYPT=false
+unset SESSION_DOMAIN || true
 export QUEUE_CONNECTION=sync
 export LOG_CHANNEL=stderr
 export LOG_STACK=single
