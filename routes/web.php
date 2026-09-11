@@ -17,7 +17,12 @@ use App\Http\Controllers\SalesInvoiceController;
 use App\Http\Controllers\SettingController;
 use App\Http\Controllers\TaxRateController;
 use App\Http\Controllers\UserController;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\Route;
+
+Route::get('/health', static function (): JsonResponse {
+    return response()->json(['status' => 'ok', 'app' => config('app.name')]);
+})->name('health');
 
 Route::middleware('guest')->group(function (): void {
     Route::get('/login', [AuthController::class, 'showLogin'])->name('login');
