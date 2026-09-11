@@ -83,13 +83,18 @@ ENV PORT=80 \
     APP_DEBUG=false \
     APP_KEY=base64:jhy2XeXMVioryYjMHhGf8jPtWmiHCrfJG2BzhBet3Rw= \
     APP_URL=https://kabarbanten-keuangan.vercel.app \
+    APP_MAINTENANCE_DRIVER=file \
+    APP_MAINTENANCE_STORE=array \
     DB_CONNECTION=sqlite \
     DB_DATABASE=/app/database/database.sqlite \
     LOG_CHANNEL=stderr \
     LOG_STACK=single \
     CACHE_STORE=array \
     SESSION_DRIVER=cookie \
-    QUEUE_CONNECTION=sync
+    QUEUE_CONNECTION=sync \
+    BROADCAST_CONNECTION=log \
+    FILESYSTEM_DISK=local \
+    MAIL_MAILER=log
 
 USER www-data
 
