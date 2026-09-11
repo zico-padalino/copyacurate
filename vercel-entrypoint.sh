@@ -24,20 +24,24 @@ export VIEW_COMPILED_PATH=/tmp/laravel-storage/framework/views
 # Always use the baked demo key (ignore invalid/empty Vercel overrides).
 export APP_KEY=base64:jhy2XeXMVioryYjMHhGf8jPtWmiHCrfJG2BzhBet3Rw=
 
-# Empty string env vars imported from local .env break Laravel managers.
+# Empty string env vars imported from local .env break Laravel managers/sessions.
+export APP_NAME="Kabar Banten"
 export APP_ENV=production
 export APP_DEBUG=false
 export APP_MAINTENANCE_DRIVER=file
 export APP_MAINTENANCE_STORE=array
 export CACHE_STORE=array
 export SESSION_DRIVER=cookie
+export SESSION_LIFETIME=120
 export SESSION_ENCRYPT=false
+export SESSION_COOKIE=kabar-banten-session
 export QUEUE_CONNECTION=sync
 export BROADCAST_CONNECTION=log
 export FILESYSTEM_DISK=local
 export MAIL_MAILER=log
 export LOG_CHANNEL=stderr
 export LOG_STACK=single
+export BCRYPT_ROUNDS=12
 unset SESSION_DOMAIN || true
 
 if [ -n "${VERCEL_URL:-}" ]; then

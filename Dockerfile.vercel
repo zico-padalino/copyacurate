@@ -91,10 +91,13 @@ ENV PORT=80 \
     LOG_STACK=single \
     CACHE_STORE=array \
     SESSION_DRIVER=cookie \
+    SESSION_LIFETIME=120 \
+    SESSION_COOKIE=kabar-banten-session \
     QUEUE_CONNECTION=sync \
     BROADCAST_CONNECTION=log \
     FILESYSTEM_DISK=local \
-    MAIL_MAILER=log
+    MAIL_MAILER=log \
+    BCRYPT_ROUNDS=12
 
 USER www-data
 

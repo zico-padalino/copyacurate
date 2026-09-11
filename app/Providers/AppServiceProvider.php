@@ -18,9 +18,14 @@ class AppServiceProvider extends ServiceProvider
     {
         // Vercel often imports blank env values (""), which break Laravel managers.
         config([
+            'app.name' => filled(config('app.name')) ? config('app.name') : 'Kabar Banten',
             'app.maintenance.driver' => filled(config('app.maintenance.driver')) ? config('app.maintenance.driver') : 'file',
             'app.maintenance.store' => filled(config('app.maintenance.store')) ? config('app.maintenance.store') : 'array',
             'session.driver' => filled(config('session.driver')) ? config('session.driver') : 'cookie',
+            'session.lifetime' => ((int) config('session.lifetime')) > 0 ? (int) config('session.lifetime') : 120,
+            'session.cookie' => filled(config('session.cookie')) && config('session.cookie') !== '-session'
+                ? config('session.cookie')
+                : 'kabar-banten-session',
             'cache.default' => filled(config('cache.default')) ? config('cache.default') : 'array',
             'queue.default' => filled(config('queue.default')) ? config('queue.default') : 'sync',
             'filesystems.default' => filled(config('filesystems.default')) ? config('filesystems.default') : 'local',
